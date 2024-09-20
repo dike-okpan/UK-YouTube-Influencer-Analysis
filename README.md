@@ -77,3 +77,95 @@ Data Cleaning Steps:
 
 Adele's impressive engagement rate, higher average view counts, and greater profitability make her the stronger YouTuber for an impactful marketing campaign. Adele's audience is highly active which increases the chances of them responding positively to the campaign. This Engagement is vital for creating buzz for a successful marketing campaign.
 
+# Analysis 
+
+## Findings
+
+- What did we find?
+
+For this analysis, we're going to focus on the questions below to get the information we need for our marketing client - 
+
+Here are the key questions we need to answer for our marketing client: 
+1. Who are the top 10 YouTubers with the most subscribers?
+2. Which 3 channels have uploaded the most videos?
+3. Which 3 channels have the most views?
+4. Which 3 channels have the highest average views per video?
+5. Which 3 channels have the highest views per subscriber ratio?
+6. Which 3 channels have the highest subscriber engagement rate per video uploaded?
+
+
+### 1. Who are the top 10 YouTubers with the most subscribers?
+
+| Rank | Channel Name         | Subscribers (M) |
+|------|----------------------|-----------------|
+| 1    | Ed Sheeran           | 52.9            |
+| 2    | One Direction        | 37.9            |
+| 3    | NoCopyrightSounds    | 33.2            |
+| 4    | Mr Bean              | 31.6            |
+| 5    | Peppa Pig            | 30.2            |
+| 6    | Adele                | 29.6            |
+| 7    | DanTDM               | 26.4            |
+| 8    | Coldplay             | 24.5            |
+| 9    | KSI                  | 24.1            |
+| 10   | Mister Max           | 23.5            |
+
+
+### 2. Which 3 channels have uploaded the most videos?
+
+| Rank | Channel Name    | Videos Uploaded |
+|------|-----------------|-----------------|
+| 1    | BBC Radio 2     | 36,873          |
+| 2    | BBC News        | 17,750          |
+| 3    | BBC             | 14,491          |
+
+
+### 3. Which 3 channels have the most views?
+
+| Rank | Channel Name | Total Views (B) |
+|------|--------------|-----------------|
+| 1    | Ed Sheeran   | 29.21           |
+| 2    | Peppa Pig    | 22.04           |
+| 3    | DanTDM       | 19.03           |
+
+
+### 4. Which 3 channels have the highest average views per video?
+
+| Channel Name  | Averge Views per Video (M) |
+|---------------|----------------------------|
+| Adele         | 900.88                     |
+| AdeleVEVO     | 230.85                     |
+| Calvin Harris | 203.89                     |
+
+
+### 5. Which 3 channels have the highest views per subscriber ratio?
+
+| Rank | Channel Name       | Views per Subscriber        |
+|------|--------------------|---------------------------- |
+| 1    | DisneyJuniorUK     | 1024.67                     |
+| 2    | DisneyChannelUK    | 1004.58                     |
+| 3    | Cartoon Network UK | 950.16                      |
+
+
+### 6. Which 3 channels have the highest subscriber engagement rate per video uploaded?
+
+| Rank | Channel Name    | Subscriber Engagement Rate  |
+|------|-----------------|---------------------------- |
+| 1    | Adele           | 1,973,333                   |
+| 2    | AdeleVEVO       | 290,384                     |
+| 3    | Calvin Harris   | 246,052                     |
+
+
+
+
+### Notes
+
+For this analysis, we'll prioritize analysing the metrics that are important in generating the expected ROI for our marketing client, which are the YouTube channels with the most 
+
+- subscribers
+- average views per video
+- subscriber engagement rate
+
+# Insights Deep Dive
+### Total Subscribers
+
+Ed Sheeran has 52.9 million subscribers but doesn't guarantee high engagement. Adele, though not in the top three, performs well in other areas.
