@@ -1,4 +1,4 @@
-# Top_UK_YouTubers
+# Top UK YouTubers of 2024: Insights for a Successful Marketing Campaign
 
 # Objective
 - What is the key pain point? 
@@ -161,11 +161,62 @@ Here are the key questions we need to answer for our marketing client:
 
 For this analysis, we'll prioritize analysing the metrics that are important in generating the expected ROI for our marketing client, which are the YouTube channels with the most 
 
-- subscribers
-- average views per video
-- subscriber engagement rate
+- Subscribers
+- Average Views per Video
+- Subscriber Engagement Rate
+- Views per Subscriber
 
-# Insights Deep Dive
+## Insights Deep Dive
 ### Total Subscribers
 
 Ed Sheeran has 52.9 million subscribers but doesn't guarantee high engagement. Adele, though not in the top three, performs well in other areas.
+
+### Average Views per Video
+
+Adele leads with 900.38 million views per video, showing strong audience engagement despite fewer subscribers.
+
+### Subscriber Engagement Rate
+
+Adele has a high engagement rate of 1.97 million, significantly higher than others, indicating her audience is active and responsive.
+
+### Views per Subscriber
+
+While DisneyJuniorUK leads in views per subscriber, this metric isn’t as relevant for mainstream marketing campaigns aimed at a wide demographic. Adele's performance in more general metrics like engagement and average views suggests she appeals to a broader audience.
+
+## Insights Comparison
+### Ed Sheeran vs Adele
+
+Let’s take a closer look at the two top YouTubers, Adele and Ed Sheeran. While Ed Sheeran boasts a larger audience with 52.9M subscribers versus Adele's 29.6M, the numbers tell a different story when we look closer.
+
+Adele’s fans are highly engaged, interacting with her content 1.97M times, compared to Ed Sheeran's 201k. This higher engagement means Adele’s audience is more likely to respond to interactive marketing efforts. Here, we can clearly see that subscriber count alone doesn’t guarantee engagement. 
+
+When it comes to video views, Adele leads significantly with an average of 900.38M views per video, far more than Ed Sheeran’s 111.1M. 
+
+Financially, Adele’s net profit stands out at $90.04M, compared to Ed Sheeran’s $11.06M, showcasing her superior financial performance.
+
+# Recommendations
+
+Based on the insights and findings above, we would recommend: 
+- Adele
+
+Why Adele?
+
+Adele is the best choice for a marketing campaign because she has the highest engagement rate, meaning Adele's audience is highly interactive. Adele's videos also receive the most average views per video, ensuring broad visibility. Also, Adele's strong net profit makes her stands tall above the rest.
+In conclusion, the combinaton of Adele's impressive engagement rate, higher average view counts, and greater profitability make her the stronger YouTuber for an impactful marketing campaign.
+
+### Action Plan
+
+Based on our analysis, we believe the best channel to advance a long-term partnership deal with for an impactful marketing campaign is the Adele channel.
+
+- Now, what steps do we take to implement the recommended decisions effectively?
+
+1. Contact Adele's management for partnership discussions
+2. Develop creative ideas for the campaign, aligning with Adele's content and audience interests.
+3. Negotiate contracts within the budgets allocated for the marketing campaign.
+4. Finalize terms with Adele's team, especially for deliverables and timeline.
+5. Kick off the campaign with Adele and track key metrics(Engagement, Views, ROI).
+6. Review how the campaigns have gone, gather insights and optimize based on feedback from converted customers.
+
+
+
+
