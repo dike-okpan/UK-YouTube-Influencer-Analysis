@@ -1,9 +1,8 @@
-# Top UK YouTubers of 2024: Insights for a Successful Marketing Campaign
+# Top UK YouTubers of 2024: insights for a successful marketing campaign
 
 # Objective
-- What is the key pain point? 
 
-The Head of Marketing wants to find out who the top YouTubers are in 2024 to decide on which YouTubers would be best to run marketing campaigns throughout the rest of the year.
+To identify the top YouTubers in 2024, based on factors such as audience size, engagement, and relevance. This will help the marketing team decide which YouTuber would be the most effective partner for running marketing campaigns throughout the year.
 
 
 Insights and recommendations are provided on the following key areas: 
@@ -21,6 +20,16 @@ As the Head of Marketing, I want to use a dashboard that analyses YouTube channe
 This dashboard should allow me to identify the top performing channels based on metrics like subscriber base and average views. 
 
 With this information, I can make more informed decisions about which Youtubers are right to collaborate with, and therefore maximize how effective each marketing campaign is.
+
+**Note:**
+
+Conversion Rate    = 2%
+
+Product Cost       = $5
+
+Campaign Cost      = $50,000
+
+Number of Videos   = 11
 
 # Data source 
 
@@ -61,12 +70,12 @@ Below is a table outlining the constraints on our cleaned dataset:
 | Property | Description |
 | --- | --- |
 | Number of Rows | 100 |
-| Number of Columns | 4 |
+| Number of Columns | 6 |
 
 Data Cleaning Steps:
 
 1. Removed unnecessary columns by only selecting the ones I need.
-2. Subscriber numbers in Total Subscriber column were converted from string (eg "90.5M", 12M") formats to numbers (eg "90,500,000", 12,000,000").
+2. Changed data type in "Total Subscriber" column from string to whole number, then converted values from "90.5M", 12M" formats to numbers (eg "90,500,000", 12,000,000") by multiplying by 1,000,000.
 3. Checked for duplicate records.
 4. Checked for null values.
 5. Renamed columns using aliases.
@@ -166,6 +175,11 @@ For this analysis, we'll prioritize analysing the metrics that are important in 
 - Subscriber Engagement Rate
 - Views per Subscriber
 
+Potential Net Profit was calculated by multiplying Average Views per Video, Conversion Rate, and Product Cost, then subtracting the Campaign Cost times the Number of Videos.
+
+(average views per video  x  conversion rate  x  product cost) - (campaign cost  x  number of videos)
+
+
 ## Insights Deep Dive
 ### Total Subscribers
 
@@ -216,6 +230,348 @@ Based on our analysis, we believe the best channel to advance a long-term partne
 4. Finalize terms with Adele's team, especially for deliverables and timeline.
 5. Kick off the campaign with Adele and track key metrics(Engagement, Views, ROI).
 6. Review how the campaigns have gone, gather insights and optimize based on feedback from converted customers.
+
+# Assumptions and Caveats
+
+ - Channel name “BBC ???” 
+
+I assumed it to be BBC radio 2. My assumption came as a result of searching various BBC YouTube channels via YouTube.com. And also, “BBC ???” was grouped in the music category in the dataset. This also strengthened my assumption.
+
+# Queries
+
+## SQL Queries
+
+### Testing
+
+```sql
+--- Row count test
+select count(*) as Total_Rows
+from Top_100_UK_YouTubers
+
+--- Column count test
+select count(*) as Total_Columns
+from INFORMATION_SCHEMA.COLUMNS
+where TABLE_NAME = 'Top_100_UK_YouTubers'
+
+--- Data type check
+select TABLE_NAME,
+	DATA_TYPE
+from INFORMATION_SCHEMA.COLUMNS
+where TABLE_NAME = 'Top_100_UK_YouTubers'
+
+--- Duplicates check
+select Channel_Name,
+	count(*) as Duplicates
+from Top_100_UK_YouTubers
+group by Channel_Name
+having count(*) > 1
+
+```
+
+### Who are the top 10 YouTubers with the most subscribers?
+
+```sql
+select top 3
+	Channel_Name,
+	Total_Videos
+from view_Top_100_UK_YouTubers
+order by Total_Videos desc
+
+```
+
+### Which 3 channels have uploaded the most videos?
+
+```sql
+select top 3
+	Channel_Name,
+	Total_Videos
+from view_Top_100_UK_YouTubers
+order by Total_Videos desc
+
+```
+
+### Which 3 channels have the most views?
+
+```sql
+select top 3
+	Channel_Name,
+	Total_Views
+from view_Top_100_UK_YouTubers
+order by Total_Views desc
+
+```
+
+### Which 3 channels have the highest average views per video?
+
+```sql
+select top 3
+	Channel_Name,
+	round((cast(Total_Views as float)/Total_Videos),-4) as Average_Views_per_Video
+from view_Top_100_UK_YouTubers
+order by Average_Views_per_Video desc
+
+```
+
+### Which 3 channels have the highest views per subscriber ratio?
+
+```sql
+select top 3
+	Channel_Name,
+	round((cast(Total_Views as float)/Total_Subscribers),2) as Views_per_Subscriber
+from view_Top_100_UK_YouTubers
+order by Views_per_Subscriber desc
+
+```
+
+### Which 3 channels have the highest subscriber engagement rate per video uploaded?
+
+```sql
+select top 3
+	Channel_Name,
+	round((total_subscribers/Total_Videos),3) as Subscriber_Engagement_Rate
+from view_Top_100_UK_YouTubers
+order by Subscriber_Engagement_Rate desc
+
+```
+
+### What is the Net Profit of the 3 channels with the highest number of subscribers?
+
+```sql
+/* 
+
+# 1. Define variables 
+# 2. Create a CTE that rounds the average views per video 
+# 3. Select columns and create calculated columns from existing ones 
+# 4. Filter results by Youtube channels
+# 5. Sort results by net profits (from highest to lowest)
+
+*/
+
+Declare @conversionrate float = 0.02;			--conversion rate 2%
+Declare @productcost money = 5.0;				--product cost $5
+Declare @campaigncost money = 50000.0;		    --campaign cost $50000
+Declare @numberOfVideos INT = 11;               -- The number of videos (11)
+
+WITH ChannelData AS (
+	select 
+		Channel_Name,
+		Total_Subscribers,
+		Total_Videos,
+		Total_Views,
+		round((cast(Total_Views as float)/Total_Videos),-4) as Rounded_avg_views_per_video
+	from uk_youtube_db.dbo.view_Top_100_UK_YouTubers
+)
+select 
+	Channel_Name,
+	Total_Subscribers,
+	Rounded_avg_views_per_video,
+	(Rounded_avg_views_per_video * @conversionrate) as Potential_product_sales_per_video,
+	(Rounded_avg_views_per_video * @conversionrate * @productcost) as potential_revenue_video,
+	(Rounded_avg_views_per_video * @conversionrate * @productcost) - (@campaigncost * @numberOfVideos) as Net_profit
+from channeldata
+where Channel_Name in ('Ed Sheeran', 'One Direction', 'NoCopyrightSounds')
+order by Net_profit desc
+
+```
+
+### What is the Net Profit of the 3 channels with the highest Average Views per Video?
+
+```sql
+Declare @conversionrate float = 0.02;			--conversion rate 2%
+Declare @productcost money = 5.0;				--product cost $5
+Declare @campaigncost money = 50000.0;		    --campaign cost $50000
+Declare @numberOfVideos INT = 11;               -- The number of videos (11)
+
+WITH ChannelData AS (
+	select 
+		Channel_Name,
+		Total_Subscribers,
+		Total_Videos,
+		Total_Views,
+		round((cast(Total_Views as float)/Total_Videos),-4) as Rounded_avg_views_per_video
+	from uk_youtube_db.dbo.view_Top_100_UK_YouTubers
+)
+select 
+	Channel_Name,
+	Total_Subscribers,
+	Rounded_avg_views_per_video,
+	(Rounded_avg_views_per_video * @conversionrate) as Potential_product_sales_per_video,
+	(Rounded_avg_views_per_video * @conversionrate * @productcost) as potential_revenue_video,
+	(Rounded_avg_views_per_video * @conversionrate * @productcost) - (@campaigncost * @numberOfVideos) as Net_profit
+from channeldata
+where Channel_Name in ('Adele', 'AdeleVEVO', 'Calvin Harris')
+order by Net_profit desc
+
+```
+
+### What is the Net Profit of the 3 channels with the highest subscriber engagement rate per video uploaded?
+
+```sql
+Declare @conversionrate float = 0.02;			--conversion rate 2%
+Declare @productcost money = 5.0;				--product cost $5
+Declare @campaigncost money = 50000.0;		    --campaign cost $50000
+Declare @numberOfVideos INT = 11;               -- The number of videos (11)
+
+WITH ChannelData AS (
+	select 
+		Channel_Name,
+		Total_Subscribers,
+		Total_Videos,
+		Total_Views,
+		round((cast(Total_Views as float)/Total_Videos),-4) as Rounded_avg_views_per_video
+	from uk_youtube_db.dbo.view_Top_100_UK_YouTubers
+)
+select 
+	Channel_Name,
+	Total_Subscribers,
+	Rounded_avg_views_per_video,
+	(Rounded_avg_views_per_video * @conversionrate) as Potential_product_sales_per_video,
+	(Rounded_avg_views_per_video * @conversionrate * @productcost) as potential_revenue_video,
+	(Rounded_avg_views_per_video * @conversionrate * @productcost) - (@campaigncost * @numberOfVideos) as Net_profit
+from channeldata
+where Channel_Name in ('Adele', 'AdeleVEVO', 'Calvin Harris')
+order by Net_profit desc
+
+```
+
+### What is the Net Profit of the 3 channels with the highest views per subscriber?
+
+```sql
+Declare @conversionrate float = 0.02;			--conversion rate 2%
+Declare @productcost money = 5.0;				--product cost $5
+Declare @campaigncost money = 50000.0;		    --campaign cost $50000
+Declare @numberOfVideos INT = 11;               -- The number of videos (11)
+
+WITH ChannelData AS (
+	select 
+		Channel_Name,
+		Total_Subscribers,
+		Total_Videos,
+		Total_Views,
+		round((cast(Total_Views as float)/Total_Videos),-4) as Rounded_avg_views_per_video
+	from uk_youtube_db.dbo.view_Top_100_UK_YouTubers
+)
+select 
+	Channel_Name,
+	Total_Subscribers,
+	Rounded_avg_views_per_video,
+	(Rounded_avg_views_per_video * @conversionrate) as Potential_product_sales_per_video,
+	(Rounded_avg_views_per_video * @conversionrate * @productcost) as potential_revenue_video,
+	(Rounded_avg_views_per_video * @conversionrate * @productcost) - (@campaigncost * @numberOfVideos) as Net_profit
+from channeldata
+where Channel_Name in ('DisneyJuniorUK', 'DisneyChannelUK', 'Cartoon Network UK')
+order by Net_profit desc
+
+```
+
+### Ed Sheeran vs Adele
+
+```sql
+--- 1) Total Subscribers
+select Channel_Name,
+	Total_Subscribers
+from view_Top_100_UK_YouTubers
+where Channel_Name in ('Ed Sheeran', 'Adele')
+order by Total_Subscribers desc
+
+--- 2) Average Views per Video
+select Channel_Name,
+	round((cast(Total_Views as float)/Total_Videos),-4) as Average_Views_per_Video
+from view_Top_100_UK_YouTubers
+where Channel_Name in ('Ed Sheeran', 'Adele')
+order by Average_Views_per_Video desc
+
+--- 3) Average Views per Video
+select Channel_Name,
+	round((total_subscribers/Total_Videos),3) as Subscriber_Engagement_Rate
+from view_Top_100_UK_YouTubers
+where Channel_Name in ('Ed Sheeran', 'Adele')
+order by Subscriber_Engagement_Rate desc
+
+--- 4) Net Profit
+Declare @conversionrate float = 0.02;			--conversion rate 2%
+Declare @productcost money = 5.0;				--product cost $5
+Declare @campaigncost money = 50000.0;		    --campaign cost $50000
+Declare @numberOfVideos INT = 11;               -- The number of videos (11)
+
+WITH ChannelData AS (
+	select 
+		Channel_Name,
+		Total_Subscribers,
+		Total_Videos,
+		Total_Views,
+		round((cast(Total_Views as float)/Total_Videos),-4) as Rounded_avg_views_per_video
+	from uk_youtube_db.dbo.view_Top_100_UK_YouTubers
+)
+select 
+	Channel_Name,
+	(Rounded_avg_views_per_video * @conversionrate * @productcost) - (@campaigncost * @numberOfVideos) as Net_profit
+from channeldata
+where Channel_Name in ('Ed Sheeran', 'Adele')
+order by Net_profit desc
+
+```
+
+## DAX Measures
+
+### 1. Total Subscribers (M)
+```sql
+Total Subscribers (M) = 
+VAR million = 1000000
+VAR sum_of_subscribers = SUM(view_Top_100_UK_YouTubers[Total_Subscribers])
+VAR total_subscribers = DIVIDE(sum_of_subscribers, million)
+
+RETURN total_subscribers
+
+```
+
+### 2. Total Views (B)
+```sql
+Total Views (B) = 
+VAR billion = 1000000000
+VAR sum_of_views = SUM(view_Top_100_UK_YouTubers[Total_Views])
+VAR total_views = DIVIDE(sum_of_views, billion)
+
+RETURN total_views
+
+```
+
+### 3. Total Videos
+```sql
+Total Videos = 
+VAR sum_of_videos = SUM(view_Top_100_UK_YouTubers[Total_Videos])
+
+RETURN sum_of_videos
+
+```
+
+### 4. Average Views Per Video (M)
+```sql
+Avg Views per Video (M) = 
+VAR sumoftotalviews = SUM(view_Top_100_UK_YouTubers[Total_Views])
+VAR sumoftotalvideos = SUM(view_Top_100_UK_YouTubers[Total_Videos])
+VAR avgviewspervideo = DIVIDE(sumoftotalviews, sumoftotalvideos, BLANK())
+VAR finalavgviewspervideo = DIVIDE(avgviewspervideo, 1000000, BLANK())
+
+RETURN finalavgviewspervideo
+
+```
+
+
+### 5. Subscriber Engagement Rate
+```sql
+Subscriber Engagement Rate = 
+VAR sumofsubscribers = SUM(view_Top_100_UK_YouTubers[Total_Subscribers])
+VAR sumofvideos = SUM(view_Top_100_UK_YouTubers[Total_Videos])
+VAR subscriberengagementrate = DIVIDE(sumofsubscribers, sumofvideos, BLANK())
+
+RETURN subscriberengagementrate
+
+```
+
+
+
+
 
 
 
