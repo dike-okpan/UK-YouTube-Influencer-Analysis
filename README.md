@@ -6,7 +6,7 @@ To identify the top YouTubers in 2024, based on factors such as audience size, e
 
 
 Insights and recommendations are provided on the following key areas: 
-- subscriber count
+- Daily Revenue Analysis
 - total views
 - total videos, and
 - engagement metrics
@@ -33,9 +33,9 @@ Number of Videos   = 11
 
 # Data source 
 
-- What data is needed to achieve our objective?
+What data is needed to achieve our objective?
 
-We need data on the top UK YouTubers in 2024 that includes their 
+We need data on the top UK YouTubers in 2024 that includes their: 
 - channel names
 - total subscribers
 - total views
@@ -43,7 +43,8 @@ We need data on the top UK YouTubers in 2024 that includes their
 
 
 
-- Where is the data coming from? 
+Where is the data coming from? 
+
 The data is sourced from Kaggle (an Excel extract), [see here to find it.](https://www.kaggle.com/datasets/bhavyadhingra00020/top-100-social-media-influencers-2024-countrywise?resource=download)
 
 ## Tools 
@@ -64,6 +65,7 @@ The data met the following criteria and constraints after cleaning:
 - Only relevant columns were retained.
 - All data types were appropriate for the contents of each column.
 - No column contained null values, indicating complete data for all records.
+- No duplicate records
 
 Below is a table outlining the constraints on our cleaned dataset:
 
@@ -71,6 +73,17 @@ Below is a table outlining the constraints on our cleaned dataset:
 | --- | --- |
 | Number of Rows | 100 |
 | Number of Columns | 6 |
+
+And here is a tabular representation of schema for our cleaned dataset:
+
+| Column Name | Data Type | Nullable |
+| --- | --- | --- |
+| Grade | nvarchar | NO |
+| Category | nvarchar | NO |
+| Channel_Name | nvarchar | NO |
+| No_of_Uploads | int | NO |
+| Video_Views | big int | NO |
+| Subscribers | int | NO |
 
 Data Cleaning Steps:
 
