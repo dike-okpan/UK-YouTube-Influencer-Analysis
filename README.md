@@ -1,4 +1,4 @@
-# Top UK YouTubers of 2024: insights for a successful marketing campaign
+# INFLUENCER MARKETING IMPACT: UK YouTuber Insights for 2024
 
 # Objective
 
@@ -525,7 +525,7 @@ order by Net_profit desc
 
 ```
 
-## DAX Measures
+## POWER BI DAX
 
 ### 1. Total Subscribers (M)
 ```sql
