@@ -1,5 +1,23 @@
 # INFLUENCER MARKETING IMPACT: UK YouTuber Insights for 2024
 
+# Table of contents
+
+- [Objective](#objective)
+	- [User story](#user-story)
+- [Data source](#data-source)
+	- [Tools](#tools)
+- [Data Cleaning, Structure & Testing](#data-cleaning-structure--testing)
+-  [Executive Summary](#executive-summary)
+	- [Overview of Findings](#overview-of-findings)  
+- [Analysis](#analysis)
+	- [Findings](#findings) 
+
+
+
+
+
+
+
 # Objective
 
 To identify the top YouTubers in 2024, based on factors such as audience size, engagement, and relevance. This will help the marketing team decide which YouTuber would be the most effective partner for running marketing campaigns throughout the year.
