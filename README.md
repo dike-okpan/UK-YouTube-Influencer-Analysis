@@ -6,17 +6,19 @@
 	- [User story](#user-story)
 - [Data source](#data-source)
 	- [Tools](#tools)
-- [Data Cleaning, Structure & Testing](#data-cleaning-structure--testing)
+- [Data Cleaning, Structure and Testing](#data-cleaning-structure-and-testing)
 -  [Executive Summary](#executive-summary)
 	- [Overview of Findings](#overview-of-findings)  
 - [Analysis](#analysis)
-	- [Findings](#findings) 
-
-
-
-
-
-
+	- [Findings](#findings)
+ 	- [Insights Deep Dive](#insights-deep-dive)
+  	- [Insights Comparison](#insights-comparison)
+- [Recommendations](#recommendations)
+  	- [Action Plan](#action-plan)
+- [Assumptions and Caveats](#assumptions-and-caveats)
+- [Queries](#queries)
+	- [SQL Queries](#sql-queries)
+ 	- [Power BI DAX](#power-bi-dax) 
 
 # Objective
 
@@ -76,7 +78,7 @@ The data is sourced from Kaggle (an Excel extract), [see here to find it.](https
 | Power BI | Visualizing the data via interactive dashboards |
 | GitHub | Hosting the project documentation and version control |
 
-# Data Cleaning, Structure & Testing
+# Data Cleaning, Structure and Testing
 
 The data met the following criteria and constraints after cleaning:
 
@@ -543,7 +545,7 @@ order by Net_profit desc
 
 ```
 
-## POWER BI DAX
+## Power BI DAX
 
 ### 1. Total Subscribers (M)
 ```sql
