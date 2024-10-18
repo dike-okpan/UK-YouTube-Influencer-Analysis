@@ -266,9 +266,11 @@ Based on our analysis, we believe the best channel to advance a long-term partne
 
 # Assumptions and Caveats
 
- - Channel name “BBC ???” 
+**Channel Name: “BBC ???”**
 
-I assumed it to be BBC radio 2. My assumption came as a result of searching various BBC YouTube channels via YouTube.com. And also, “BBC ???” was grouped in the music category in the dataset. This also strengthened my assumption.
+One of the channels in the dataset was listed as “BBC ???”, which appeared to be an error or incomplete information. After researching on the YouTube website, I concluded that the correct channel name is likely "BBC Radio 2," based on the results of my search. 
+
+Also, the  fact that “BBC ???” was categorized under the music category in the dataset further supported my assumption.
 
 # Queries
 
