@@ -119,6 +119,10 @@ Data Cleaning Steps:
 
 Adele's impressive engagement rate, higher average view counts, and greater profitability make her the stronger YouTuber for an impactful marketing campaign. Adele's audience is highly active which increases the chances of them responding positively to the campaign. This Engagement is vital for creating buzz for a successful marketing campaign.
 
+![Dashboard](https://github.com/dike-okpan/Top_UK_YouTubers/blob/db5ba707c97134721730b84f5f23d6f8ae611cbb/dashboard1.png)
+
+![Dashboard](https://github.com/dike-okpan/Top_UK_YouTubers/blob/db5ba707c97134721730b84f5f23d6f8ae611cbb/dashboard2.png)
+
 # Analysis 
 
 ## Findings
@@ -240,6 +244,8 @@ Adele’s fans are highly engaged, interacting with her content 1.97M times, com
 When it comes to video views, Adele leads significantly with an average of 900.38M views per video, far more than Ed Sheeran’s 111.1M. 
 
 Financially, Adele’s net profit stands out at $90.04M, compared to Ed Sheeran’s $11.06M, showcasing her superior financial performance.
+
+![Dashboard](https://github.com/dike-okpan/Top_UK_YouTubers/blob/db5ba707c97134721730b84f5f23d6f8ae611cbb/dashboard3.png)
 
 # Recommendations
 
